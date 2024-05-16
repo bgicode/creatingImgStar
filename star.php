@@ -27,17 +27,17 @@ imageFilledPolygon($im, $arStarCoord, count($arStarCoord) / 2, $color);
 
 // Start Eye____________
 
-$Eye = createElips(56, 76, 0, 0, 0);
+$eye = createElips(56, 76, 0, 0, 0);
 $flash = createElips(25, 25, 255, 255, 255);
-imagecopy($Eye, $flash, (int)((imagesx($Eye) - imagesx($flash)) / 2), 13, 0, 0, imagesx($flash), imagesy($flash));
+imagecopy($eye, $flash, (int)((imagesx($eye) - imagesx($flash)) / 2), 13, 0, 0, imagesx($flash), imagesy($flash));
 
-$EyeLeft = rotateImg($Eye, 340);
+$eyeLeft = rotateImg($eye, 340);
 
-$Eyes = createBackground(240, imagesy($EyeLeft));
-imagecopy($Eyes, $EyeLeft, 0, 0, 0, 0, imagesx($EyeLeft), imagesy($EyeLeft));
+$eyes = createBackground(240, imagesy($eyeLeft));
+imagecopy($eyes, $eyeLeft, 0, 0, 0, 0, imagesx($eyeLeft), imagesy($eyeLeft));
 
-$EyeRight = rotateImg($Eye, 20);
-imagecopy($Eyes, $EyeRight, imagesx($Eyes) - imagesx($EyeRight), 0, 0, 0, imagesx($EyeLeft), imagesy($EyeLeft));
+$eyeRight = rotateImg($eye, 20);
+imagecopy($eyes, $eyeRight, imagesx($eyes) - imagesx($eyeRight), 0, 0, 0, imagesx($eyeLeft), imagesy($eyeLeft));
 
 // End Eye____________
 
@@ -52,13 +52,6 @@ imagecopy($cheeks, $cheek, imagesx($cheeks) - imagesx($cheek), 0, 0, 0, imagesx(
 // End сheeks____________
 
 // Start Smile___________
-
-// $arc = createBackground(120, 120);
-// imageantialias($arc, true);
-// $arcColor = [ 0, 0, 0];
-// imageSetStyle($arc, $arcColor);
-// imageSetThickness($arc, 12);
-// imagearc($arc, (imagesx($arc) / 2), (imagesy($arc) / 2) - 12, imagesx($arc), imagesy($arc), 25, 155, IMG_COLOR_STYLED);
 
 $smile = createBackground(120,120);
 $smElips1 = createElips(120, 120, 0, 0, 0);
@@ -82,13 +75,11 @@ imagecopy($im, $smRec, (int)(imagesx($im) - imagesx($smRec)) / 2, 420, 0, 0, ima
 
 // Start add other_________
 
-imagecopy($im, $Eyes, (int)(imagesx($im) - imagesx($Eyes)) / 2, 370, 0, 0, imagesx($Eyes), imagesy($Eyes));
+imagecopy($im, $eyes, (int)(imagesx($im) - imagesx($eyes)) / 2, 370, 0, 0, imagesx($eyes), imagesy($eyes));
 
 imagecopy($im, $cheeks, (int)(imagesx($im) - imagesx($cheeks)) / 2, 430, 0, 0, imagesx($cheeks), imagesy($cheeks));
 
 // End add other_________
-
-// imagecopy($im, $arc, (imagesx($im) - imagesx($arc)) / 2, 410, 0, 0, imagesx($arc), imagesy($arc));
 
 header("Content-type: image/png");
 imagePng($im);
